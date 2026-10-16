@@ -1,4 +1,4 @@
-# Kimi Agent 0.0.4
+# Kimi 0.0.5
 
 把普通 **Kimi 桌面版的 Work 本地 Agent** 接入官方 Magpie。不是 Kimi Code CLI，也不是 Kimi 会员／API 供应商。
 
@@ -11,7 +11,7 @@
 
 Chat 页面、云端 Claw 的模型不在本插件的接入范围内。
 
-安装单独的、本地可还原菜单补丁后，Kimi Work 的原生模型菜单显示 Magpie 所有已启用的模型，名称带 `Magpie`。在 Kimi 中选择模型后，请求按该模型的完整 ID 路由；每段对话可以选择不同模型。模型目录每 10 秒自动从本机 Magpie 同步，目录有变化才通知菜单刷新。被移除的模型会明确报错，不静默切换到其它供应商。
+安装单独的、本地可还原菜单补丁后，Kimi Work 的原生模型菜单显示在 Magpie 中为 Kimi 勾选的模型，名称带 `Magpie`。在 Kimi 中选择模型后，请求按该模型的完整 ID 路由；每段对话可以选择不同模型。模型目录每 10 秒自动从本机 Magpie 同步，目录有变化才通知菜单刷新。被移除的模型会明确报错，不静默切换到其它供应商。
 
 未安装菜单补丁时，仍可在 Magpie 的 Kimi Agent 卡片中选择默认模型；Kimi 原有的模型选项使用这个默认路由。
 
@@ -39,3 +39,9 @@ Kimi 模型目录遵守 Magpie 对 `kimi-desktop` 设置的可见范围、逐模
 已有的本地可还原菜单补丁可使用随包提供的 `menu-hook.cjs`。本插件不会自动修改 Kimi 安装文件。连接时菜单只显示为 Kimi 选择的模型，断开恢复原生选项。
 
 安装入口：`github:kupakupar/magpie-agent-kimi`。
+
+## 设备间同步
+
+Magpie 的加密同步会携带这个 Git 安装入口；新设备会按需下载插件，列表名称为 `Kimi`。安装链接和 Agent ID `kimi-desktop` 保持不变。旧设备若仍使用 `magpie-agent-kimi` 安装别名，重新安装同一入口即可迁移名称，无需删除 Agent 配置。
+
+每台设备需要自行安装并登录普通 Kimi 桌面应用、在 Magpie 中连接 Kimi。登录凭据、回环端口和本地菜单补丁不会跨设备同步。Kimi Work 供应商是独立插件，本包不包含它。

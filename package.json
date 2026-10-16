@@ -1,6 +1,6 @@
 {
-  "name": "magpie-agent-kimi",
-  "version": "0.0.4",
+  "name": "Kimi",
+  "version": "0.0.5",
   "private": true,
   "type": "module",
   "main": "./index.mjs",
