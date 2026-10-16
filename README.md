@@ -42,6 +42,8 @@ Kimi 模型目录遵守 Magpie 对 `kimi-desktop` 设置的可见范围、逐模
 
 ## 设备间同步
 
-Magpie 的加密同步会携带这个 Git 安装入口；新设备会按需下载插件，列表名称为 `Kimi`。安装链接和 Agent ID `kimi-desktop` 保持不变。旧设备若仍使用 `magpie-agent-kimi` 安装别名，重新安装同一入口即可迁移名称，无需删除 Agent 配置。
+Magpie 的加密同步会携带这个 Git 安装入口；新设备会按需下载插件，列表名称为 `Kimi`。安装链接和 Agent ID `kimi-desktop` 保持不变。旧设备更新代码后，Bun 仍可能保留 `magpie-agent-kimi` 安装别名，单纯更新或重复添加相同入口不能保证改名。
+
+如果版本已经为 0.0.5 或更新，但列表仍显示旧名称，可在 Kimi 空闲时运行 `python3 tools/fix-kimi-name.py`（Windows 也可使用 `python` 或 `py -3`）。脚本先备份 Bun 安装记录，再迁移依赖别名、锁文件记录和模块目录；不卸载插件、不改 Magpie 二进制，不读写账号凭据、供应商、提示词或对话配置。完成后重新打开 Magpie 插件页面。自定义 Magpie 配置目录可通过 `--directory` 指定。
 
 每台设备需要自行安装并登录普通 Kimi 桌面应用、在 Magpie 中连接 Kimi。登录凭据、回环端口和本地菜单补丁不会跨设备同步。Kimi Work 供应商是独立插件，本包不包含它。
